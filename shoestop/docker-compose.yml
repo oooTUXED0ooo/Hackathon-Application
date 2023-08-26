@@ -3,16 +3,17 @@ services:
   shoestop:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-shoe
     container_name: shoestop
     ports:
      - '5000:5000'
   jenkins:
-    image: jenkins/jenkins
+    build:
+      context: .
+      dockerfile: Dockerfile-jen
     container_name: jenkins
     ports:
       - '8080:8080'
+      - '50000:50000'
     volumes:
       - /home/ubuntu/Hackathon-Application/shoestop/jenkins:/var/jenkins_home
-
-
